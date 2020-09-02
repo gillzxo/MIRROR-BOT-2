@@ -337,7 +337,7 @@ class GoogleDriveHelper:
                 buttons = button_build.ButtonMaker()
                 buttons.buildbutton("♻️G-DRIVE LINK♻️", self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id")))
                 try:
-                    msg += f'\n<b>🔸💿Total Size : </b><code>{get_readable_file_size(int(meta.get("size")))}</code>'
+                    msg += f'\n\n<b>🔹💿Total Size :</b> <code>{get_readable_file_size(int(meta.get("size")))}</code>\n\n<b>○ 👥 Uploader :</b> {self.message.from_user.username}\n\n<b>🚫Note: It is forbidden to share the index link anywhere else</b>\n\n<b>#Uploaded Successfully To Drive ✅</b>\n\n<b>🔹Powered By: @MDH_HINDI</b>
                 except TypeError:
                     pass
                 if INDEX_URL is not None:
