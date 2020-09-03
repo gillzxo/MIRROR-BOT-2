@@ -319,12 +319,12 @@ class GoogleDriveHelper:
             if meta.get("mimeType") == self.__G_DRIVE_DIR_MIME_TYPE:
                 dir_id = self.create_directory(meta.get('name'), parent_id)
                 result = self.cloneFolder(meta.get('name'), meta.get('name'), meta.get('id'), dir_id)
-                msg += f'<b>○ 🌀 Folder Name :</b> <code>{meta.get("name")}</code>\n\n<b>○ 💾 Size :</b> {get_readable_file_size(self.transferred_size)}'
+                msg += f'<b>○ 📁 Folder Name :</b> <code>{meta.get("name")}</code>\n\n<b>○ 💾 Size :</b> {get_readable_file_size(self.transferred_size)}'
                 buttons = button_build.ButtonMaker()
-                buttons.buildbutton("🌍 GDRIVE LINK", self.__G_DRIVE_DIR_BASE_DOWNLOAD_URL.format(dir_id))
+                buttons.buildbutton("♻️G-DRIVE LINK♻️", self.__G_DRIVE_DIR_BASE_DOWNLOAD_URL.format(dir_id))
                 if INDEX_URL is not None:
                     url = requests.utils.requote_uri(f'{INDEX_URL}/{meta.get("name")}/')
-                    buttons.buildbutton("📁 INDEX URL", url)
+                    buttons.buildbutton("⚡ INDEX URL", url)
                 if BUTTON_THREE_NAME is not None and BUTTON_THREE_URL is not None:
                     buttons.buildbutton(f"{BUTTON_THREE_NAME}", f"{BUTTON_THREE_URL}")
                 if BUTTON_FOUR_NAME is not None and BUTTON_FOUR_URL is not None:
@@ -333,16 +333,16 @@ class GoogleDriveHelper:
                     buttons.buildbutton(f"{BUTTON_FIVE_NAME}", f"{BUTTON_FIVE_URL}")
             else:
                 file = self.copyFile(meta.get('id'), parent_id)
-                msg += f'<b>○ 🌀 File Name :</b> <code>{file.get("name")}</code>'
+                msg += f'<b>○ 📁File Name :</b> <code>{file.get("name")}</code>'
                 buttons = button_build.ButtonMaker()
-                buttons.buildbutton("🌍 GDRIVE LINK", self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id")))
+                buttons.buildbutton("♻️G-DRIVE LINK♻️", self.__G_DRIVE_BASE_DOWNLOAD_URL.format(file.get("id")))
                 try:
-                    msg += f'\n\n<b>○ 💾 Total Size :</b> <code>{get_readable_file_size(int(meta.get("size")))}</code>\n\n<b>⚠ DO NOT <u>SHARE</u> INDEX LINK PUBLICLY ⚠</b>\n\n<b>#Cloned To Team Drive ✅</b>\n\n<b>○ 🗳 Powered By @Modzilla</b>'
+                    msg += f'\n\n<b>○ 💽 Total Size :</b> <code>{get_readable_file_size(int(meta.get("size")))}</code>\n\n<b>⚠️NOTE::Do not Share Index Link elsewhere!</b>\n\n<b>#Cloned To Team Drive ✅</b>\n\n<b>○ 🛡️ Powered By: @MDH_HINDI</b>'
                 except TypeError:
                     pass
                 if INDEX_URL is not None:
                         url = requests.utils.requote_uri(f'{INDEX_URL}/{file.get("name")}')
-                        buttons.buildbutton("📁 INDEX LINK", url)
+                        buttons.buildbutton("⚡INDEX LINK", url)
                 if BUTTON_THREE_NAME is not None and BUTTON_THREE_URL is not None:
                     buttons.buildbutton(f"{BUTTON_THREE_NAME}", f"{BUTTON_THREE_URL}")
                 if BUTTON_FOUR_NAME is not None and BUTTON_FOUR_URL is not None:
@@ -495,17 +495,17 @@ class GoogleDriveHelper:
             for file in response.get('files', []):
                 if file.get('mimeType') == "application/vnd.google-apps.folder":  # Detect Whether Current Entity is a Folder or File.
                     msg += f"⁍<code>{file.get('name')}<br>(folder📁)</code><br>" \
-                           f"<b><a href='https://drive.google.com/drive/folders/{file.get('id')}'>🌍 GDRIVE LINK</a></b>"
+                           f"<b><a href='https://drive.google.com/drive/folders/{file.get('id')}'>♻️ G-DRIVE LINK ♻️</a></b>"
                     if INDEX_URL is not None:
                         url = requests.utils.requote_uri(f'{INDEX_URL}/{file.get("name")}/')
-                        msg += f' <b>| <a href="{url}>📁 INDEX LINK</a></b>'
+                        msg += f' <b>| <a href="{url}>⚡INDEX LINK</a></b>'
  
                 else:
                     msg += f"<b>○ File Name :</b> <code>{file.get('name')}<br>({get_readable_file_size(int(file.get('size')))}) 📄</code><br>" \
-                           f"<b><a href='https://drive.google.com/uc?id={file.get('id')}&export=download'>🌍 GDRIVE LINK</a></b>"
+                           f"<b><a href='https://drive.google.com/uc?id={file.get('id')}&export=download'>♻️ G-DRIVE LINK ♻️</a></b>"
                     if INDEX_URL is not None:
                         url = requests.utils.requote_uri(f'{INDEX_URL}/{file.get("name")}')
-                        msg += f' <b>| <a href="{url}">📁 INDEX LINK</a></b>'
+                        msg += f' <b>| <a href="{url}">⚡INDEX LINK</a></b>'
  
                 msg += '<br><br>'
                 content_count += 1
